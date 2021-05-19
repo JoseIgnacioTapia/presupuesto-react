@@ -12,13 +12,3 @@ export const revisarPresupuesto = (presupuesto, restante) => {
   return clase;
 }
 
-
-export const gastoSuperior = (restante) => {
-  let clase;
-
-  if (restante < 0) {
-    clase = 'alert alert-danger';
-  }
-
-  return clase;
-}

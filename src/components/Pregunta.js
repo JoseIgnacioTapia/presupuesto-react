@@ -29,6 +29,8 @@ const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta }) =
     guardarRestante(cantidad);
     actualizarPregunta(false);
 
+    // Resetear Input Presupuesto
+    guardarCantidad('');
   }
 
   return ( 
@@ -44,6 +46,7 @@ const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta }) =
           type="number"
           className="u-full-width"
           placeholder="Coloca tu presupuesto"
+          value={cantidad}
           onChange={definirPresupuesto}
         />
 

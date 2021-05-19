@@ -6,11 +6,25 @@ import ControlPresupuesto from './components/ControlPresupuesto';
 
 function App() {
 
+  // Gastos en el Local Storage
+  let gastosIniciales = JSON.parse(localStorage.getItem('gastos'));
+  let restanteInicial = JSON.parse(localStorage.getItem('restante'));
+  let presupuestoInicial = JSON.parse(localStorage.getItem('presupuesto'));
+  if (!gastosIniciales) {
+    gastosIniciales = [];
+  }
+  if (!restanteInicial) {
+    restanteInicial = [];
+  }
+  if (!presupuestoInicial) {
+    presupuestoInicial = [];
+  }
+
   // Definir state
-  const [ presupuesto, guardarPresupuesto ] = useState(0);
-  const [ restante, guardarRestante ] = useState(0);
+  const [ presupuesto, guardarPresupuesto ] = useState(presupuestoInicial);
+  const [ restante, guardarRestante ] = useState(restanteInicial);
   const [ mostrarpregunta, actualizarPregunta ] = useState(true);
-  const [ gastos, guardarGastos ] = useState([]);
+  const [ gastos, guardarGastos ] = useState(gastosIniciales);
   const [ gasto, guardarGasto ] = useState({});
   const [ crearGasto, guardarCrearGasto ] = useState(false);
 
@@ -30,8 +44,17 @@ function App() {
 
       // Resetear a False
       guardarCrearGasto(false);
+
     }
+    // Guardar Gastos y Restante en Local Storage
+    localStorage.setItem('gastos', JSON.stringify(gastos));
+    localStorage.setItem('restante', JSON.stringify(restante));
   }, [gasto, crearGasto, gastos, restante])
+
+  // UseEffect que guarda el Presupuesto
+  useEffect(() => {
+    localStorage.setItem('presupuesto', JSON.stringify(presupuesto));
+  }, [presupuesto])
 
   return (
     <div className="container">
@@ -39,14 +62,13 @@ function App() {
         <h1>Gasto Semanal</h1>
 
         <div className="contenido-principal contenido">
-          { mostrarpregunta ? 
-            (
+          
             <Pregunta
               guardarPresupuesto={guardarPresupuesto}
               guardarRestante={guardarRestante}
               actualizarPregunta={actualizarPregunta}
+              presupuesto={presupuesto}
             />
-            )
             :
             <div className="row">
               <div className="one-half column">
@@ -67,7 +89,7 @@ function App() {
                 />
               </div>
             </div>
-           }
+
         </div>
       </header>
     </div>
