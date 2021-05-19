@@ -49,14 +49,14 @@ function App() {
             )
             :
             <div className="row">
-              <div class="one-half column">
+              <div className="one-half column">
                 <Formulario
                   guardarGasto={guardarGasto}
                   guardarCrearGasto={guardarCrearGasto}
                 />
               </div>
 
-              <div class="one-half column">
+              <div className="one-half column">
                 <Listado
                   gastos={gastos}
                 />
