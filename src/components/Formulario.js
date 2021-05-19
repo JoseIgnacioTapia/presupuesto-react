@@ -17,7 +17,7 @@ const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
       guardarError(true);
       return;
     }
-    guardarError(false);
+    guardarError(false); 
 
     // Construir el gasto
     const gasto = {

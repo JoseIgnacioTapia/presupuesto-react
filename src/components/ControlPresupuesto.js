@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { revisarPresupuesto } from '../helpers';
+import Error from './Error';
 import PropTypes from 'prop-types';
+
 
 const ControlPresupuesto = ({ presupuesto, restante }) => {
   return (
@@ -11,6 +13,14 @@ const ControlPresupuesto = ({ presupuesto, restante }) => {
       <div className={revisarPresupuesto(presupuesto, restante)}>
         Restante: $ { restante }
       </div>
+
+      {
+        (restante < 0) 
+        ? 
+        <Error mensaje="🚨 El Gasto excedió el Presupuesto"/> 
+        : 
+        null
+      }
     </Fragment>
   );
 }
