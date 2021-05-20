@@ -64,7 +64,8 @@ const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta, act
 Pregunta.propTypes = {
   guardarPresupuesto: PropTypes.func.isRequired,
   guardarRestante: PropTypes.func.isRequired,
-  actualizarPregunta: PropTypes.func.isRequired
+  actualizarPregunta: PropTypes.func.isRequired,
+  actualizarBoton: PropTypes.func.isRequired
 }
  
 export default Pregunta;

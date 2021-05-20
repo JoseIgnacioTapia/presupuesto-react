@@ -56,6 +56,7 @@ function App() {
   // UseEffect que guarda el Presupuesto
   useEffect(() => {
     localStorage.setItem('presupuesto', JSON.stringify(presupuesto));
+    guardarGastos([]);
   }, [presupuesto])
 
   return (

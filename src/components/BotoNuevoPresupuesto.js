@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const BotonNuevoPresupuesto = ({ actualizarBoton, actualizarPregunta }) => {
 
@@ -22,5 +23,10 @@ const BotonNuevoPresupuesto = ({ actualizarBoton, actualizarPregunta }) => {
   )
 
 };
+
+BotonNuevoPresupuesto.prototype = {
+  actualizarBoton: PropTypes.func.isRequired,
+  actualizarPregunta: PropTypes.func.isRequired,
+}
  
 export default BotonNuevoPresupuesto;
