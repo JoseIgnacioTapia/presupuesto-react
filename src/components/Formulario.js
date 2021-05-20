@@ -77,7 +77,9 @@ const Formulario = ({ guardarGasto, guardarCrearGasto, error, guardarError }) =>
 
 Formulario.prototype = {
   guardarGasto: PropTypes.func.isRequired,
-  guardarCrearGasto: PropTypes.func.isRequired
+  guardarCrearGasto: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  guardarError: PropTypes.func.isRequired
 }
  
 export default Formulario;
