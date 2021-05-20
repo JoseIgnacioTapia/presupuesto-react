@@ -15,10 +15,10 @@ function App() {
     gastosIniciales = [];
   }
   if (!restanteInicial) {
-    restanteInicial = [];
+    restanteInicial = 0;
   }
   if (!presupuestoInicial) {
-    presupuestoInicial = [];
+    presupuestoInicial = 0;
   }
 
   // Definir state
@@ -29,6 +29,8 @@ function App() {
   const [ gastos, guardarGastos ] = useState(gastosIniciales);
   const [ gasto, guardarGasto ] = useState({});
   const [ crearGasto, guardarCrearGasto ] = useState(false);
+
+  const [error, guardarError] = useState(false);
 
   // UseEffect que actualiza el restante
   useEffect(() => {
@@ -67,8 +69,11 @@ function App() {
         <div className="contenido-principal contenido">
           { mostrarBoton ?
             <BotonNuevoPresupuesto
+              guardarPresupuesto={guardarPresupuesto}
+              guardarRestante={guardarRestante}
               actualizarBoton={actualizarBoton}
               actualizarPregunta={actualizarPregunta}
+              guardarError={guardarError}
             />
             :
             null
@@ -90,6 +95,8 @@ function App() {
               <Formulario
                 guardarGasto={guardarGasto}
                 guardarCrearGasto={guardarCrearGasto}
+                error={error}
+                guardarError={guardarError}
               />
             </div>
 

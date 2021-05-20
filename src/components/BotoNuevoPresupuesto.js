@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BotonNuevoPresupuesto = ({ actualizarBoton, actualizarPregunta }) => {
+const BotonNuevoPresupuesto = ({ actualizarBoton, actualizarPregunta, guardarError, guardarPresupuesto, guardarRestante }) => {
 
   const definirNuevoPresupuesto = e => {
     e.preventDefault();
     actualizarBoton(false);
     actualizarPregunta(true);
+    guardarPresupuesto(0);
+guardarRestante(0);
+    guardarError(false)
   };
 
   return (

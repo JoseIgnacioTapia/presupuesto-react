@@ -3,10 +3,10 @@ import Error from './Error';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
-const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
+const Formulario = ({ guardarGasto, guardarCrearGasto, error, guardarError }) => {
   const [nombre, guardarNombre] = useState('');
   const [cantidad, guardarCantidad] = useState(0);
-  const [error, guardarError] = useState(false);
+  
 
   // Cuando el usuario agrega un gasto
   const agregarGasto = e => {
