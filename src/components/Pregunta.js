@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Error from './Error';
 import PropTypes from 'prop-types'
 
-const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta }) => {
+const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta, actualizarBoton }) => {
 
   // Definir el State
   const [cantidad, guardarCantidad] = useState(0);
@@ -28,6 +28,7 @@ const Pregunta = ({ guardarPresupuesto, guardarRestante, actualizarPregunta }) =
     guardarPresupuesto(cantidad);
     guardarRestante(cantidad);
     actualizarPregunta(false);
+    actualizarBoton(true);
 
     // Resetear Input Presupuesto
     guardarCantidad('');

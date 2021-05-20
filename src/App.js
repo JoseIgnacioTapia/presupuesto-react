@@ -3,6 +3,7 @@ import Pregunta from './components/Pregunta';
 import Formulario from './components/Formulario';
 import Listado from './components/Listado';
 import ControlPresupuesto from './components/ControlPresupuesto';
+import BotonNuevoPresupuesto from './components/BotoNuevoPresupuesto';
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
   // Definir state
   const [ presupuesto, guardarPresupuesto ] = useState(presupuestoInicial);
   const [ restante, guardarRestante ] = useState(restanteInicial);
-  const [ mostrarpregunta, actualizarPregunta ] = useState(true);
+  const [ mostrarpregunta, actualizarPregunta ] = useState(false);
+  const [ mostrarBoton, actualizarBoton ] = useState(true);
   const [ gastos, guardarGastos ] = useState(gastosIniciales);
   const [ gasto, guardarGasto ] = useState({});
   const [ crearGasto, guardarCrearGasto ] = useState(false);
@@ -62,33 +64,45 @@ function App() {
         <h1>Gasto Semanal</h1>
 
         <div className="contenido-principal contenido">
-          
+          { mostrarBoton ?
+            <BotonNuevoPresupuesto
+              actualizarBoton={actualizarBoton}
+              actualizarPregunta={actualizarPregunta}
+            />
+            :
+            null
+          }
+          { mostrarpregunta ?
             <Pregunta
               guardarPresupuesto={guardarPresupuesto}
               guardarRestante={guardarRestante}
               actualizarPregunta={actualizarPregunta}
+              actualizarBoton={actualizarBoton}
               presupuesto={presupuesto}
             />
             :
-            <div className="row">
-              <div className="one-half column">
-                <Formulario
-                  guardarGasto={guardarGasto}
-                  guardarCrearGasto={guardarCrearGasto}
-                />
-              </div>
-
-              <div className="one-half column">
-                <Listado
-                  gastos={gastos}
-                />
-
-                <ControlPresupuesto
-                  presupuesto={presupuesto}
-                  restante={restante}
-                />
-              </div>
+            null
+          }
+            
+          <div className="row">
+            <div className="one-half column">
+              <Formulario
+                guardarGasto={guardarGasto}
+                guardarCrearGasto={guardarCrearGasto}
+              />
             </div>
+
+            <div className="one-half column">
+              <Listado
+                gastos={gastos}
+              />
+
+              <ControlPresupuesto
+                presupuesto={presupuesto}
+                restante={restante}
+              />
+            </div>
+          </div>
 
         </div>
       </header>
